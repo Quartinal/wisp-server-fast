@@ -1,0 +1,33 @@
+{
+    "name": "wisp-server-fast",
+    "version": "0.1.0",
+    "description": "A fast wisp server",
+    "license": "MPL-2.0",
+    "main": "./dist/index.js",
+    "types": "./index.d.ts",
+    "files": [
+        "wrapper.wasm",
+        "main.go",
+        "go.mod",
+        "go.sum",
+        "index.ts",
+        "example.ts",
+        "types/*.ts",
+        "index.d.ts",
+        "dist/*"
+    ],
+    "scripts": {
+        "build": "tsx build.ts"
+    },
+    "dependencies": {
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.7.7",
+        "@types/ws": "^8.5.12",
+        "esbuild": "^0.24.0",
+        "ws": "^8.18.0"
+    },
+    "devDependencies": {
+        "express": "^4.21.1"
+    },
+    "type": "module"
+}

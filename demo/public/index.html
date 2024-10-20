@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Wisp demo</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+            }
+
+            iframe {
+                outline: none;
+                border: none;
+                width: 50%;
+                height: 40%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@2.1.21/dist/index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mercuryworkshop/bare-mux@2.1.4/dist/index.js"></script>
+        <script src="/ultraviolet/uv.bundle.js"></script>
+        <script src="/ultraviolet/uv.config.js"></script>
+        <script src="/sw.js"></script>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                });
+            } else {
+                console.warn('Your platform does not support service workers.');
+            }
+
+            (async () => {
+                const connection = new BareMux.BareMuxConnection('https://cdn.jsdelivr.net/npm/@mercuryworkshop/bare-mux@2.1.4/dist/worker.js');
+            
+                const wispUrl =
+                    (location.protocol === "https:" ? "wss" : "ws") +
+                    "://" +
+                    location.origin.replace(
+                        (location.protocol === "https:" ? "https" : "http") + "://",
+                        "",
+                    ) +
+                    "/wisp/";
+
+                await connection.setTransport('https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@2.1.21/dist/index.mjs', [{ wisp: wispUrl }]);
+            })();
+        </script>
+
+        <input type="text" class="url-input">
+
+        <script>
+            window.onload = () => {
+                const iframe = document.querySelector('.iframe');
+                const input = document.querySelector('.url-input');
+
+                const value = input.value;
+                
+                if (value.startsWith("https://")) {
+                    iframe.src = origin + __uv$config.prefix + __uv$config.encodeUrl(input.value);
+                } else {
+                    iframe.src = origin + __uv$config.prefix + __uv$config.encodeUrl('https://' + input.value);
+                }
+            };
+        </script>
+
+        <iframe src="about:blank" class="iframe"></iframe>
+    </body>
+</html>

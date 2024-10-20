@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es2022",
+      "module": "nodenext",
+      "strict": true,
+      "esModuleInterop": true,
+      "declaration": true,
+      "allowJs": true,
+      "moduleResolution": "nodenext"
+    },
+    "include": ["."],
+    "exclude": ["./wasm_exec.js"],
+}
