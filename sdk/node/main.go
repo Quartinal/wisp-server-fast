@@ -3,10 +3,10 @@ package main
 import (
 	"net/http"
 	"net/url"
-    "syscall/js"
+	"syscall/js"
 
-	wisp "github.com/Quartinal/wisp-server-go/http/js"
 	connection "github.com/Quartinal/wisp-server-go/connection/js"
+	wisp "github.com/Quartinal/wisp-server-go/http/js"
 )
 
 func main() {

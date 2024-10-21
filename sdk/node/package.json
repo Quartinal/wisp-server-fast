@@ -1,7 +1,7 @@
 {
     "name": "wisp-server-fast",
     "version": "0.1.0",
-    "description": "A fast wisp server",
+    "description": "A fast wisp server.",
     "license": "MPL-2.0",
     "main": "./dist/index.js",
     "types": "./index.d.ts",

@@ -10,13 +10,13 @@ import (
 
 // OptionsStruct holds configuration options.
 type OptionsStruct struct {
-	HostnameWhitelist []*regexp.Regexp `yaml:"hostname_whitelist"`
-	HostnameBlacklist []*regexp.Regexp `yaml:"hostname_blacklist"`
-	PortWhitelist     []string         `yaml:"port_whitelist"`
-	PortBlacklist     []string         `yaml:"port_blacklist"`
-	AllowTCPStreams   bool             `yaml:"allow_tcp_streams"`
-	AllowUDPStreams   bool             `yaml:"allow_udp_streams"`
-	StreamLimitTotal  int              `yaml:"stream_limit_total"`
+	HostnameWhitelist  []*regexp.Regexp `yaml:"hostname_whitelist"`
+	HostnameBlacklist  []*regexp.Regexp `yaml:"hostname_blacklist"`
+	PortWhitelist      []string         `yaml:"port_whitelist"`
+	PortBlacklist      []string         `yaml:"port_blacklist"`
+	AllowTCPStreams    bool             `yaml:"allow_tcp_streams"`
+	AllowUDPStreams    bool             `yaml:"allow_udp_streams"`
+	StreamLimitTotal   int              `yaml:"stream_limit_total"`
 	StreamLimitPerHost int              `yaml:"stream_limit_per_host"`
 }
 

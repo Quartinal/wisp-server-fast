@@ -117,11 +117,11 @@ func (ss *ServerStreamJS) wsToTCP() {
 }
 
 type WebSocketReadWriter struct {
-	conn    *gowebsocket.Conn
-	send    chan []byte
-	receive chan []byte
-	close   chan struct{}
-	once    sync.Once
+	conn     *gowebsocket.Conn
+	send     chan []byte
+	receive  chan []byte
+	close    chan struct{}
+	once     sync.Once
 	JsWsConn js.Value
 }
 
