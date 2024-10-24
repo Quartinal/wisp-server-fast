@@ -1,6 +1,6 @@
 {
     "name": "wisp-server-fast",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "A fast wisp server.",
     "license": "MPL-2.0",
     "main": "./dist/index.js",
@@ -21,10 +21,9 @@
     },
     "dependencies": {
         "@types/express": "^5.0.0",
+        "@types/golang-wasm-exec": "^1.15.2",
         "@types/node": "^22.7.7",
-        "@types/ws": "^8.5.12",
-        "esbuild": "^0.24.0",
-        "ws": "^8.18.0"
+        "esbuild": "^0.24.0"
     },
     "devDependencies": {
         "express": "^4.21.1"

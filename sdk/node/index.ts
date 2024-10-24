@@ -1,6 +1,6 @@
-/// <reference path="types/wasm_exec.ts" />
-import "./wasm_exec.js";
+/// <reference types="golang-wasm-exec" />
 import { readFileSync } from "fs";
+import "./wasm_exec.js";
 import { join } from "path";
 import type { IncomingMessage } from "http";
 
@@ -8,7 +8,9 @@ declare global {
     function handleWebSocket(jsWsConn: IncomingMessage): void;
 }
 
-const wasmPath = join(import.meta.dirname, "wrapper.wasm");
+const wasmPath = import.meta.dirname.endsWith("dist") 
+    ? join(import.meta.dirname, "../wrapper.wasm") 
+    : join(import.meta.dirname, "wrapper.wasm");
 const wasmBuffer = Buffer.from(readFileSync(wasmPath));
 
 let wasmInstance: WebAssembly.Instance | null = null;
