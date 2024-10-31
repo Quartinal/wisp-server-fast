@@ -3,6 +3,10 @@ hostname_blacklist:
 port_whitelist:
   - "80"
   - "443"
+  - "8080"
+  - "1234"
+  - "3000"
+  - "1337"
 port_blacklist:
   - "22"
 allow_tcp_streams: true
