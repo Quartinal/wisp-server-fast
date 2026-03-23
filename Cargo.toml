@@ -1,0 +1,20 @@
+[workspace]
+members = [
+    "mux",
+    "bindings/node",
+    "bindings/bun",
+]
+resolver = "2"
+
+[workspace.lints.rust]
+unsafe_code = "warn"
+
+[workspace.lints.clippy]
+all = "warn"
+
+[profile.release]
+lto           = true
+codegen-units = 1
+opt-level     = 3
+strip         = false
+panic         = "abort"

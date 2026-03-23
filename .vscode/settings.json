@@ -1,6 +1,4 @@
 {
-    "go.toolsEnvVars": {
-        "GOOS": "js",
-        "GOARCH": "wasm"
-    }
+    "rust-analyzer.initializeStopped": true,
+    "rust-analyzer.cachePriming.enable": false
 }

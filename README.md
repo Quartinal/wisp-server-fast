@@ -1,7 +1,5 @@
 ### wisp-server-fast
 
-A fast wisp server.
+A little modification of ~~epoxy-server~~ wisp-mux to work with NodeJS and Bun apis.
 
-**./sdk** is where you can find solutions for both browsers (WIP) and servers.
-
-**./server** is where you can find the server-side Go code.
+Credits to [gkgoat](https://github.com/gkgoat1) for being the very first stargazer of my proxy-related projects!
