@@ -59,12 +59,13 @@ jobs:
         if: matrix.target == 'x86_64-unknown-linux-musl'
         run: sudo apt-get update && sudo apt-get install -y musl-tools
 
-      - name: Install aarch64 musl cross-toolchain
+      - name: Install Zig (aarch64-musl)
         if: matrix.target == 'aarch64-unknown-linux-musl'
-        run: |
-          curl -fLO https://musl.cc/aarch64-linux-musl-cross.tgz
-          tar xzf aarch64-linux-musl-cross.tgz -C /opt
-          echo "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=/opt/aarch64-linux-musl-cross/bin/aarch64-linux-musl-gcc" >> $GITHUB_ENV
+        uses: mlugg/setup-zig@v2
+
+      - name: Install cargo-zigbuild (aarch64-musl)
+        if: matrix.target == 'aarch64-unknown-linux-musl'
+        run: cargo install cargo-zigbuild --locked
 
       - name: Clean pre-existing native binaries
         working-directory: bindings/node
@@ -73,7 +74,7 @@ jobs:
 
       - name: Build
         working-directory: bindings/node
-        run: napi build --platform --release --target ${{ matrix.target }}
+        run: napi build ${{ matrix.target == 'aarch64-unknown-linux-musl' && '--zig' || '' }} --platform --release --target ${{ matrix.target }}
 
       - name: Pack (npm)
         working-directory: bindings/node
@@ -142,12 +143,13 @@ jobs:
         if: matrix.target == 'x86_64-unknown-linux-musl'
         run: sudo apt-get update && sudo apt-get install -y musl-tools
 
-      - name: Install aarch64 musl cross-toolchain
+      - name: Install Zig (aarch64-musl)
         if: matrix.target == 'aarch64-unknown-linux-musl'
-        run: |
-          curl -fLO https://musl.cc/aarch64-linux-musl-cross.tgz
-          tar xzf aarch64-linux-musl-cross.tgz -C /opt
-          echo "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=/opt/aarch64-linux-musl-cross/bin/aarch64-linux-musl-gcc" >> $GITHUB_ENV
+        uses: mlugg/setup-zig@v2
+
+      - name: Install cargo-zigbuild (aarch64-musl)
+        if: matrix.target == 'aarch64-unknown-linux-musl'
+        run: cargo install cargo-zigbuild --locked
 
       - name: Clean pre-existing native binaries
         working-directory: bindings/bun
@@ -156,7 +158,7 @@ jobs:
 
       - name: Build
         working-directory: bindings/bun
-        run: napi build --platform --release --target ${{ matrix.target }}
+        run: napi build ${{ matrix.target == 'aarch64-unknown-linux-musl' && '--zig' || '' }} --platform --release --target ${{ matrix.target }}
 
       - name: Pack (bun)
         working-directory: bindings/bun
